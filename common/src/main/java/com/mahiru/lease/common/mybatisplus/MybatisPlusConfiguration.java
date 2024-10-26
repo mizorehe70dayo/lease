@@ -4,12 +4,12 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * @author mahiru
+ * @version v1.0.0
  * @className MybatisPlusConfiguration
  * @description mybatis-plus配置类
- * @author mahiru
  * @date 2024/10/26 17:10
- * @version v1.0.0
-**/
+ **/
 @Configuration
 @MapperScan("com.mahiru.lease.web.*.mapper")
 public class MybatisPlusConfiguration {

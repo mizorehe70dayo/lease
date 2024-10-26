@@ -1,7 +1,7 @@
 package com.mahiru.lease.model.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import com.atguigu.lease.model.enums.ItemType;
+import com.mahiru.lease.model.enums.ItemType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
