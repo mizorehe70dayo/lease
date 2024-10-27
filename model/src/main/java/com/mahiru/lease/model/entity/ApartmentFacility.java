@@ -21,6 +21,4 @@ public class ApartmentFacility extends BaseEntity {
     @Schema(description = "设施id")
     @TableField(value = "facility_id")
     private Long facilityId;
-
-
 }

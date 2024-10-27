@@ -2,11 +2,16 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: lease-web-admin
+  profiles:
+    active: dev
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://192.168.58.101:3306/lease?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2b8
-    username: root
-    password: root
+    url: jdbc:mysql://${lease.db.host}:3306/lease?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai&useSSL=true&allowPublicKeyRetrieval=true&requireSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${lease.db.username}
+    password: ${lease.db.password}
     hikari:
       connection-test-query: SELECT 1 # 自动检测连接
       connection-timeout: 60000 #数据库连接超时时间,默认30秒
@@ -15,8 +20,21 @@ spring:
       maximum-pool-size: 12 #连接池最大连接数，默认是10
       minimum-idle: 10 #最小空闲连接数量
       pool-name: SPHHikariPool # 连接池名称
+  servlet:
+    # s设置上传文件的大小
+    multipart:
+      max-file-size: 100MB  # 最大单个文件大小
+      max-request-size: 1000MB  # 最大请求大小
+  springdoc:
+    default-flat-param-object: true
 
 #用于打印框架生成的sql语句，便于调试
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+minio:
+  endpoint: ${minio.endpoint}
+  access-key: ${minio.access-key}
+  secret-key: ${minio.secret-key}
+  bucket-name: ${minio.bucket-name}

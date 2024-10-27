@@ -1,5 +1,6 @@
 package com.mahiru.lease;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version v1.0.0
 **/
 @SpringBootApplication
+@MapperScan("com.mahiru.lease.web.*.mapper")
 public class AdminWebApplication {
     public static void main(String[] args) {
         SpringApplication.run(AdminWebApplication.class, args);

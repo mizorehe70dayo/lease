@@ -24,6 +24,4 @@ public class PaymentType extends BaseEntity {
     @Schema(description = "付费说明")
     @TableField(value = "additional_info")
     private String additionalInfo;
-
-
 }

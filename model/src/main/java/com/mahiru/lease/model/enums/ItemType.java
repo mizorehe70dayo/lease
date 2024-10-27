@@ -10,7 +10,6 @@ public enum ItemType implements BaseEnum {
 
     ROOM(2, "房间");
 
-
     @EnumValue
     @JsonValue
     private Integer code;
@@ -20,7 +19,6 @@ public enum ItemType implements BaseEnum {
     public Integer getCode() {
         return this.code;
     }
-
 
     @Override
     public String getName() {

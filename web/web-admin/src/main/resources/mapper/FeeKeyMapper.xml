@@ -3,5 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mahiru.lease.web.admin.mapper.FeeKeyMapper">
+    <resultMap id="FeeInfoList" type="com.mahiru.lease.web.admin.vo.fee.FeeKeyVo">
+        <id property="id" column="id"/>
+        <result property="name" column="key_name"/>
+        <collection property="feeValueList" ofType="com.mahiru.lease.model.entity.FeeValue">
+            <id column="value_id" property="id"/>
+            <result column="value_name" property="name"/>
+            <result column="value_unit" property="unit"/>
+            <result column="key_id" property="feeKeyId"/>
+        </collection>
+    </resultMap>
 
+    <select id="selectFeeInfoList" resultType="com.mahiru.lease.web.admin.vo.fee.FeeKeyVo">
+        SELECT k.id,
+               k.name       AS key_name,
+               v.id         AS value_id,
+               v.name       AS value_name,
+               v.unit       AS value_unit,
+               v.fee_key_id AS key_id
+        FROM fee_key k
+                 LEFT JOIN
+             fee_value v ON k.id = v.fee_key_id AND v.is_deleted = 0
+        WHERE k.is_deleted = 0;
+    </select>
 </mapper>

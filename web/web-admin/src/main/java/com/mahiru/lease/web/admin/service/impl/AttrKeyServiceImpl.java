@@ -4,7 +4,11 @@ import com.mahiru.lease.model.entity.AttrKey;
 import com.mahiru.lease.web.admin.mapper.AttrKeyMapper;
 import com.mahiru.lease.web.admin.service.AttrKeyService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.mahiru.lease.web.admin.vo.attr.AttrKeyVo;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -12,9 +16,15 @@ import org.springframework.stereotype.Service;
 * @createDate 2023-07-24 15:48:00
 */
 @Service
+@AllArgsConstructor
 public class AttrKeyServiceImpl extends ServiceImpl<AttrKeyMapper, AttrKey>
     implements AttrKeyService{
+    private final AttrKeyMapper attrKeyMapper;
 
+    @Override
+    public List<AttrKeyVo> getAttrInfoList() {
+        return attrKeyMapper.selectAttrInfoList();
+    }
 }
 
 

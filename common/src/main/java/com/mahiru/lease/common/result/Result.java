@@ -44,7 +44,17 @@ public class Result<T> {
         return Result.ok(null);
     }
 
-    public static <T> Result<T> fail() {
-        return build(null, ResultCodeEnum.FAIL);
+    public static <T> Result<T> fail(Integer code, String message) {
+        Result<T> result = build(null);
+        result.setCode(code);
+        result.setMessage(message);
+        return result;
+    }
+
+    public static <T> Result<T> fail(String message) {
+        Result<T> result = new Result<>();
+        result.setCode(ResultCodeEnum.FAIL.getCode());
+        result.setMessage(message);
+        return result;
     }
 }

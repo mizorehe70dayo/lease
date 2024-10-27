@@ -1,0 +1,11 @@
+lease:
+  db:
+    host: 192.168.58.101
+    username: root
+    password: '123456'
+
+minio:
+  endpoint: http://192.168.58.101:9000
+  access-key: minio
+  secret-key: minio123
+  bucket-name: lease

@@ -4,6 +4,7 @@ package com.mahiru.lease.web.admin.controller.apartment;
 import com.mahiru.lease.common.result.Result;
 import com.mahiru.lease.model.entity.RoomInfo;
 import com.mahiru.lease.model.enums.ReleaseStatus;
+import com.mahiru.lease.web.admin.service.RoomInfoService;
 import com.mahiru.lease.web.admin.vo.room.RoomDetailVo;
 import com.mahiru.lease.web.admin.vo.room.RoomItemVo;
 import com.mahiru.lease.web.admin.vo.room.RoomQueryVo;
@@ -11,6 +12,7 @@ import com.mahiru.lease.web.admin.vo.room.RoomSubmitVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,12 +20,23 @@ import java.util.List;
 @Tag(name = "房间信息管理")
 @RestController
 @RequestMapping("/admin/room")
+@AllArgsConstructor
 public class RoomController {
 
+    private final RoomInfoService roomInfoService;
+
+    /**
+     * @author mahiru
+     * @date 2024/10/27 19:11
+     * @methodName saveOrUpdate
+     * @description 保存或更新房间信息
+     * @param roomSubmitVo
+     * @return com.mahiru.lease.common.result.Result
+     */
     @Operation(summary = "保存或更新房间信息")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody RoomSubmitVo roomSubmitVo) {
-        return Result.ok();
+        return Result.ok(roomInfoService.saveOrUpdateRoomInfo(roomSubmitVo));
     }
 
     @Operation(summary = "根据条件分页查询房间列表")

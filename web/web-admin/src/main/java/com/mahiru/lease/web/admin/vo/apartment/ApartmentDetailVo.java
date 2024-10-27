@@ -7,6 +7,7 @@ import com.mahiru.lease.model.entity.LabelInfo;
 import com.mahiru.lease.web.admin.vo.graph.GraphVo;
 import com.mahiru.lease.web.admin.vo.fee.FeeValueVo;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
